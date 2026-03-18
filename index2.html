@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeValuate | AI Price Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-blue-600 p-4 text-white text-center shadow-lg">
+        <h1 class="text-2xl font-bold italic">BIKE.AI</h1>
+    </nav>
+
+    <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-xl font-bold mb-4 text-gray-800 text-center">AI Resale Price Predictor</h2>
+        <p class="text-sm text-gray-500 mb-6 text-center">Enter bike details to estimate its market value.</p>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Bike Brand</label>
+                <select id="brand" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                    <option value="1.2">Yamaha (Premium)</option>
+                    <option value="1.0">Honda (Standard)</option>
+                    <option value="0.8">Local Brand</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Year of Purchase</label>
+                <input type="number" id="year" placeholder="e.g. 2020" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Kilometers Driven</label>
+                <input type="number" id="km" placeholder="e.g. 15000" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            </div>
+
+            <button onclick="predictPrice()" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition">
+                Analyze with AI
+            </button>
+        </div>
+
+        <div id="resultBox" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+            <p class="text-gray-600 text-sm">Estimated Value:</p>
+            <p id="priceOutput" class="text-2xl font-bold text-green-700">$0.00</p>
+        </div>
+    </div>
+
+    <script>
+        function predictPrice() {
+            // 1. Get user data
+            const brandMultiplier = parseFloat(document.getElementById('brand').value);
+            const year = parseInt(document.getElementById('year').value);
+            const km = parseInt(document.getElementById('km').value);
+            
+            if(!year || !km) { alert("Please fill all fields"); return; }
+
+            // 2. The "AI Logic" (Simple Regression Simulation)
+            // Base price $2000 - $150 for every year old - $0.02 for every km
+            const age = 2026 - year;
+            let prediction = (3000 * brandMultiplier) - (age * 250) - (km * 0.05);
+            
+            // Don't let price go below $200
+            if (prediction < 200) prediction = 200;
+
+            // 3. Show the result
+            document.getElementById('resultBox').classList.remove('hidden');
+            document.getElementById('priceOutput').innerText = "$" + prediction.toFixed(2);
+        }
+    </script>
+</body>
+</html>
