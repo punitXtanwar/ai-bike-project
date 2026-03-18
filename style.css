@@ -1,0 +1,85 @@
+/* General Page Styling */
+body {
+    background-color: #0f172a; /* Dark blue-black */
+    color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* The AI Card Container */
+.card {
+    background-color: #1e293b;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 50px;
+    border: 1px solid #334155;
+}
+
+h1 {
+    color: #38bdf8;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Input Fields */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 0.5rem;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: #38bdf8;
+}
+
+/* The Predict Button */
+button {
+    width: 100%;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.02);
+    background: #60a5fa;
+}
+
+/* Result Box */
+#resultBox {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #064e3b;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid #059669;
+}
+
+.hidden {
+    display: none;
+}
